@@ -1,7 +1,5 @@
 from pathlib import Path
 
-from ssg.parsers import Parser
-
 class Site:
     def __init__(self,source, dest, parsers = None):
         self.source = Path(source)
@@ -21,7 +19,7 @@ class Site:
             elif path.is_file():
                 self.run_parser(path)
 
-    def load_parser(self, extension) -> Parser:
+    def load_parser(self, extension):
         for parser in self.parsers:
             if parser.valid_extension(extension):
                 return parser
